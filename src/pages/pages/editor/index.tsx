@@ -69,6 +69,7 @@ const Editor = (): React.ReactElement => {
   const handleClickSave = () => {
     remove(id);
     save(title, state);
+    history.push(`/p/${title}`);
   };
   const handleClickDelete = () => {
     if (window.confirm("Really delete?")) {
