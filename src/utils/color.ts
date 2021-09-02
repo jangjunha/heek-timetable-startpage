@@ -27,3 +27,5 @@ export const BLUE_9 = "#1864ab";
 export const ORANGE_9 = "#d9480f";
 
 export const LIME_9 = "#5c940d";
+
+export const GRAPE_9 = "#862e9c";
