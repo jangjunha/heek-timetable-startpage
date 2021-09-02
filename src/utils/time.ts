@@ -12,7 +12,6 @@ export const WEEKDAYS: Weekday[] = [
 
 export function parseTime(s: string): number {
   const parts = s.split(":").map((p) => parseInt(p, 10));
-  console.log(parts);
   if (parts.length !== 2) {
     throw Error(`Invalid time string: ${s}`);
   }

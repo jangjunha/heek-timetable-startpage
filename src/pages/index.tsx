@@ -40,7 +40,7 @@ const Index = (): React.ReactElement => {
         <h3>Pages</h3>
         <PageList>
           {keys.map((k) => (
-            <PageItem>
+            <PageItem key={k}>
               <LinkButton to={`/p/${k}`}>{k}</LinkButton>
             </PageItem>
           ))}

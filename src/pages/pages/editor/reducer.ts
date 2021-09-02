@@ -106,7 +106,6 @@ const lectureReducer = createReducer<
 >(createLecture())
   .handleAction(lectureActions.updateTitle, (state, action) =>
     produce(state, (draft) => {
-      console.log("updateTitle!!!");
       draft.title = action.payload;
     })
   )
