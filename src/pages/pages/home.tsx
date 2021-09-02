@@ -11,7 +11,7 @@ import {
 } from "../../types/lecture";
 import { GRAY_5, GRAY_7, GRAY_8, GRAY_9, RED_7 } from "../../utils/color";
 import { parseTime, WEEKDAYS } from "../../utils/time";
-import LinkButton from "../../components/LinkButton";
+import { AnchorButton } from "../../components/LinkButton";
 import Main from "../../components/Main";
 import { load, State } from "../../utils/state";
 
@@ -209,13 +209,13 @@ export const _Home = ({
                         <LinkContainer>
                           {t.lecture.links?.map(({ id, label, url }) => (
                             <LinkItem key={id}>
-                              <LinkButton
+                              <AnchorButton
                                 highlighted={highlighted}
-                                to={url}
+                                href={url}
                                 rel="noopener noreferrer"
                               >
                                 {label}
-                              </LinkButton>
+                              </AnchorButton>
                             </LinkItem>
                           ))}
                         </LinkContainer>

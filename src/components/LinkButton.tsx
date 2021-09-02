@@ -45,3 +45,18 @@ const LinkButton = ({
 };
 
 export default LinkButton;
+
+export type AnchorButtonProps = React.HTMLProps<HTMLAnchorElement> &
+  ContainerProps;
+
+export const AnchorButton = ({
+  highlighted,
+  children,
+  ...anchorProps
+}: AnchorButtonProps): React.ReactElement => {
+  return (
+    <Container highlighted={highlighted}>
+      <a {...anchorProps}>{children}</a>
+    </Container>
+  );
+};
