@@ -126,7 +126,17 @@ const timesReducer = createReducer<
 >([])
   .handleAction(timesActions.add, (state, _) =>
     produce(state, (draft) => {
-      draft.push(createTime());
+      if (draft.length > 0) {
+        const last = draft[draft.length - 1];
+        draft.push({
+          id: uuidv4(),
+          weekday: last.weekday,
+          beginTime: last.beginTime,
+          endTime: last.endTime,
+        });
+      } else {
+        draft.push(createTime());
+      }
     })
   )
   .handleAction(timesActions.update, (state, action) => {
