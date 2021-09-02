@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router";
 import { Link, Redirect, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
@@ -165,7 +166,10 @@ export const _Home = ({
 
   return (
     <Main>
-      <title>Home Page</title>
+      <Helmet>
+        <title>Home Page</title>
+      </Helmet>
+
       <section>
         <HeaderWrapper>
           <PageTitle>{title}</PageTitle>
