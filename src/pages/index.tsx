@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
+import Button from "../components/Button";
 
 import LinkButton from "../components/LinkButton";
 import Main from "../components/Main";
@@ -15,7 +16,13 @@ const PageList = styled.ul`
 const PageItem = styled.li``;
 
 const Index = (): React.ReactElement => {
+  const history = useHistory();
   const keys = useMemo(getPageKeys, []);
+  const handleClickCreatePage = () => {
+    const id = new Date().toLocaleString();
+    history.push(`/p/${id}/edit`);
+  };
+
   return (
     <Main>
       <Helmet>
@@ -38,6 +45,9 @@ const Index = (): React.ReactElement => {
             </PageItem>
           ))}
         </PageList>
+        <Button highlighted={true} onClick={handleClickCreatePage}>
+          CREATE PAGE
+        </Button>
         <p>Startpages are stored in your browser.</p>
       </section>
     </Main>
