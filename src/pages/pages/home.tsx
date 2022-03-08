@@ -126,17 +126,6 @@ export const _Home = ({
   now: Date;
 }): React.ReactElement => {
   const { url } = useRouteMatch();
-
-  const [, setCounter] = useState(0);
-  const rerender = () => setCounter((prev) => prev + 1);
-  useEffect(() => {
-    function tick() {
-      rerender();
-      setTimeout(tick, (60 - (new Date()).getSeconds()) * 1000);
-    }
-    tick();
-  }, []);
-
   const times: LectureTime[] = state.lectures.flatMap((lecture) =>
     lecture.times.map((time) => ({ ...time, lecture }))
   );
@@ -246,6 +235,17 @@ const Home = (): React.ReactElement => {
   const { id } = useParams<RouteParams>();
   const { url } = useRouteMatch();
   const state = useMemo(() => load(id), [id]);
+
+  const [, setCounter] = useState(0);
+  useEffect(() => {
+    let timerId: ReturnType<typeof setTimeout>;
+    function tick() {
+      setCounter((prev) => prev + 1);
+      timerId = setTimeout(tick, (60 - (new Date()).getSeconds()) * 1000);
+    }
+    tick();
+    return () => clearTimeout(timerId);
+  }, []);
 
   if (state == null) {
     return <Redirect to={`${url}/edit`} />;
