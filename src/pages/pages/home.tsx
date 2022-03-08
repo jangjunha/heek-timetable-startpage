@@ -127,7 +127,7 @@ export const _Home = ({
 }): React.ReactElement => {
   const { url } = useRouteMatch();
 
-  const [_, setCounter] = useState(0);
+  const [, setCounter] = useState(0);
   const rerender = () => setCounter((prev) => prev + 1);
   useEffect(() => {
     function tick() {
