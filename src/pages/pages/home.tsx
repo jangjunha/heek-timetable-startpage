@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router";
 import { Link, Redirect, useRouteMatch } from "react-router-dom";
@@ -126,6 +126,17 @@ export const _Home = ({
   now: Date;
 }): React.ReactElement => {
   const { url } = useRouteMatch();
+
+  const [_, setCounter] = useState(0);
+  const rerender = () => setCounter((prev) => prev + 1);
+  useEffect(() => {
+    function tick() {
+      rerender();
+      setTimeout(tick, (60 - (new Date()).getSeconds()) * 1000);
+    }
+    tick();
+  }, []);
+
   const times: LectureTime[] = state.lectures.flatMap((lecture) =>
     lecture.times.map((time) => ({ ...time, lecture }))
   );
